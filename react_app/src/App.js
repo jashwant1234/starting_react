@@ -14,7 +14,17 @@ class App extends Component {
     this.setState({
       persons: [
         { name: newName, age: "20" },
-        { name: "sambit!", age: "22" },
+        { name: "sambit!", age: "22" }, 
+        { name: "jashwant!", age: "21" },
+      ],
+    });
+  };
+
+  nameChangeHandler = (event) =>{
+    this.setState({
+      persons: [
+        { name: event.target.value, age: "20" },
+        { name: "ashuthos", age: "22" },
         { name: "jashwant!", age: "21" },
       ],
     });
@@ -26,15 +36,16 @@ class App extends Component {
         <h1>Hi i am Jaswwant.</h1>
         <button onClick={() =>  this.switchNameHandler("somu!!!!")}>Click</button>
         <Person
-          name={this.state.persons[0].name}g
+          name={this.state.persons[0].name}
           age={this.state.persons[0].age}
           click={this.switchNameHandler.bind(this,"jashwant!!!!")}
+          change = {this.nameChangeHandler}
         >
           I love to play criciket .
         </Person>
         <Person
           name={this.state.persons[1].name}
-          age={this.state.persons[1].age}
+          age={this.state.persons[  1].age}
         />
         <Person
           name={this.state.persons[2].name}
