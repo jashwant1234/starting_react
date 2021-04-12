@@ -34,7 +34,7 @@ class App extends Component {
   render() {
     const charList = this.state.text.split('').map( (ch ,index) => {
       return <Char character={ch}
-      //key = {index}
+      key = {index}
       click = {() => this.deleteCharacter(index)}
       />
     })
