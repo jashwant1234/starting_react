@@ -1,6 +1,19 @@
 import React, { Component } from "react";
 import "./App.css";
+// import styled from 'styled-components';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import Person from "./Person/Person";
+
+// const StyledButton = styled.button`
+// background-color :${props => props.alt ? 'red' : 'green'};
+// font : inherit;
+// border : 1px solid blue;
+// padding: 8px;
+// cursor: pointer;
+// &:hover {
+//   background-color : ${props => props.alt ? 'salmon' : 'lightgreen'};
+//   color : black;
+// `
 
 class App extends Component {
   state = {
@@ -42,17 +55,17 @@ class App extends Component {
   render() {
     let person = null;
 
-    const style = {
-      backgroundColor : 'green',
-      font : 'inherit',
-      border : '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer',
-      ':hover' : {
-        backgroundColor : 'lightgreen',
-        color : 'black'
-      }
-    }
+    // const style = {
+    //   backgroundColor : 'green',
+    //   font : 'inherit',
+    //   border : '1px solid blue',
+    //   padding: '8px',
+    //   cursor: 'pointer',
+    //   ':hover' : {
+    //     backgroundColor : 'lightgreen',
+    //     color : 'black'
+    //   }
+    // }
 
     const classes = [];
 
@@ -64,7 +77,7 @@ class App extends Component {
 
     if (this.state.showPersons) {
       person = (
-        <div>
+        <div> 
           {this.state.persons.map((person, index) => {
             return (
               <Person
@@ -78,18 +91,17 @@ class App extends Component {
           })}
         </div>
       );
-      style.backgroundColor = 'red';
-      style[':hover'] = {
-        backgroundColor : 'salmon',
-        color : 'black'
-      }
+      // style.backgroundColor = 'red';
+      // style[':hover'] = {
+      //   backgroundColor : 'salmon',
+      //   color : 'black'
+      // }
     }
     
     return (
       <div className="App">
         <p className={classes.join(' ')}>Hi i am Jaswwant.</p>
-        <button
-         style = {style}
+        <button className = 'btn btn-primary'
          onClick={this.togglePerson}>Show Person</button>
         {person}
       </div>
