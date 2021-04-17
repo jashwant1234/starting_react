@@ -5,7 +5,8 @@ import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
 
-class App extends Component {
+class App extends Component  {
+
   state = {
     persons: [
       { id: "adgadf", name: "ashuthos", age: "20" },
@@ -53,7 +54,6 @@ class App extends Component {
           changed={this.nameChangeHandler}
         />
       );
-      
     }
     // console.log(btnclass.join(' '));
     return (
