@@ -1,7 +1,16 @@
-import React from "react";
+import React,{useEffect} from "react";
 import classes from "./Cockpit.css";
 
 const cockpit = (props) => {
+
+    useEffect(() => {
+      console.log('useEfect');
+      setTimeout(() =>{
+        alert("Save data to cloud");
+      },1000);
+
+    },[]);
+
   const assigned = [];
   let btnclass = "";
 
@@ -20,4 +29,4 @@ const cockpit = (props) => {
   );
 };
 
-export default cockpit;
+export default React.memo(cockpit);

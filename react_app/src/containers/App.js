@@ -1,11 +1,11 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import classes from "./App.css";
 // import styled from 'styled-components';
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
 
-class App extends Component  {
+class App extends PureComponent  {
 
   state = {
     persons: [
@@ -43,6 +43,24 @@ class App extends Component  {
     persons.splice(index, 1);
     this.setState({ persons: persons });
   };
+
+  
+
+  componentDidMount(){
+    console.log('componentDidMount');
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    return true;
+  }
+
+  componentDidUpdate(){
+    console.log('componentDidUpdate');
+  }
+
+  componentWillUnmount(){
+    console.log("componentWillUnmount");
+  }
+
 
   render() {
     let person = null;
