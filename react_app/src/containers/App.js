@@ -4,6 +4,7 @@ import classes from "./App.css";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
+import WithClass from '../hoc/WithClass';
 
 class App extends PureComponent  {
 
@@ -75,14 +76,14 @@ class App extends PureComponent  {
     }
     // console.log(btnclass.join(' '));
     return (
-      <div className={classes.App}>
+      <WithClass classes={classes.App}>
         <Cockpit
           persons = {this.state.persons}
           showPersons = {this.state.showPersons}
           togglePerson={this.togglePerson}
         />
         {person}
-      </div>
+      </WithClass>
     );
   }
 }
