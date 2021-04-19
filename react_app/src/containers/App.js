@@ -4,10 +4,10 @@ import classes from "./App.css";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import Persons from "../components/Persons/Persons";
 import Cockpit from "../components/Cockpit/Cockpit";
-import WithClass from '../hoc/WithClass';
+import WithClass from "../hoc/WithClass";
+import AuthContext from "../context/auth-context";
 
-class App extends PureComponent  {
-
+class App extends PureComponent {
   state = {
     persons: [
       { id: "adgadf", name: "ashuthos", age: "20" },
@@ -15,6 +15,8 @@ class App extends PureComponent  {
       { id: "adadfbvdf", name: "jashwant", age: "21" },
     ],
     showPersons: false,
+    changeCounter: 0,
+    login : false
   };
 
   nameChangeHandler = (event, key) => {
@@ -27,8 +29,8 @@ class App extends PureComponent  {
     person.name = event.target.value;
     const persons = [...this.state.persons];
     persons[personIndex] = person;
-    this.setState({
-      persons: persons,
+    this.setState((prevState, props) => {
+      return { persons: persons, changeCounter: prevState.changeCounter + 1 };
     });
   };
 
@@ -45,23 +47,24 @@ class App extends PureComponent  {
     this.setState({ persons: persons });
   };
 
-  
+  loginHandler = () =>{
+    this.setState({login: !this.state.login})
+  }
 
-  componentDidMount(){
-    console.log('componentDidMount');
+  componentDidMount() {
+    console.log("componentDidMount");
   }
   shouldComponentUpdate(nextProps, nextState) {
     return true;
   }
 
-  componentDidUpdate(){
-    console.log('componentDidUpdate');
+  componentDidUpdate() {
+    console.log("componentDidUpdate");
   }
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     console.log("componentWillUnmount");
   }
-
 
   render() {
     let person = null;
@@ -76,14 +79,17 @@ class App extends PureComponent  {
     }
     // console.log(btnclass.join(' '));
     return (
+
+    <AuthContext.Provider value={{authenticated:this.state.login , login : this.loginHandler}}>
       <WithClass classes={classes.App}>
         <Cockpit
-          persons = {this.state.persons}
-          showPersons = {this.state.showPersons}
+          persons={this.state.persons}
+          showPersons={this.state.showPersons}
           togglePerson={this.togglePerson}
         />
         {person}
       </WithClass>
+    </AuthContext.Provider>
     );
   }
 }

@@ -1,14 +1,15 @@
-import React,{useEffect} from "react";
+import React,{useEffect,useRef} from "react";
 import classes from "./Cockpit.css";
+import AuthContext from "../../context/auth-context";
 
 const cockpit = (props) => {
-
+    const toggleBtnRef = useRef(null);
     useEffect(() => {
       console.log('useEfect');
-      setTimeout(() =>{
-        alert("Save data to cloud");
-      },1000);
-
+      // setTimeout(() =>{
+      //   alert("Save data to cloud");
+      // },1000);
+      toggleBtnRef.current.click();
     },[]);
 
   const assigned = [];
@@ -22,9 +23,10 @@ const cockpit = (props) => {
   return (
     <div className={classes.Cockpit}>
       <p className={assigned.join(" ")}>Hi i am Jaswwant.</p>
-      <button className={btnclass} onClick={props.togglePerson}>
+      <button ref={toggleBtnRef} className={btnclass} onClick={props.togglePerson}>
         Show Person
       </button>
+      <AuthContext.Consumer>{(context) => <button onClick={context.login}>Login</button>}</AuthContext.Consumer>
     </div>
   );
 };
