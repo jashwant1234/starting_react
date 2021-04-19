@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useContext} from "react";
 import classes from'./Person.css';
 // import styled from "styled-components";
 // import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
@@ -7,10 +7,11 @@ import WithClass from "../../../hoc/WithClass";
 import AuthContext from '../../../context/auth-context';
 
 const person = (props) => {
+  const authContext = useContext(AuthContext);
   return (
     // <React.Fragment>
     <WithClass classes={classes.Person}>
-      <AuthContext.Consumer>{(context) => context.authenticated ? <p>Login</p> : <p> please Login</p>}</AuthContext.Consumer>
+      {authContext.authenticated ? <p>Login</p> : <p> please Login</p>}
       <p onClick={props.click}>
         My name is {props.name} and I am {props.age} Year old.
       </p>
