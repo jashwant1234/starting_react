@@ -2,7 +2,7 @@ import React,{useContext} from "react";
 import classes from'./Person.css';
 // import styled from "styled-components";
 // import "../../../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import Aux from "../../../hoc/Auxiliary";
+// import Aux from "../../../hoc/Auxiliary";
 import WithClass from "../../../hoc/WithClass";
 import AuthContext from '../../../context/auth-context';
 
@@ -18,7 +18,7 @@ const person = (props) => {
       <p>{props.children}</p>
       <input type="text" onChange={props.change} value={props.name}></input>
       </WithClass>
-     /* </React.Fragment> */
+      // </React.Fragment> 
   );
 };
 
