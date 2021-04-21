@@ -16,9 +16,12 @@ const Burger = (props) => {
         burgerIngredient = <p>please start adding ingredients</p>;
     }
   // console.log(Ingredient);
-  //     Ingredient.forEach(([key,value],index) =>  {
+
+  // let Ingredient = Object.entries(props.ingredients);
+  // let burgerIngredient = []; 
+  // Ingredient.forEach(([key,value],index) =>  {
   //     for(let i=1;i<=value;i++){
-  //         burgerIngredient = <BurgerIngredient key={index} type={key}/>
+  //         burgerIngredient = [...burgerIngredient,<BurgerIngredient key={value+i} type={key}/>]
   //     }
   // })
   console.log(burgerIngredient);
