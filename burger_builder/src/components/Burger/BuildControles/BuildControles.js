@@ -25,9 +25,13 @@ export default function BuildControles(props) {
           />
         );
       })}
-      <button className={classes.OrderButton}
-      disabled={!props.purchasable}
-      >ORDER NOW</button>
+      <button
+        onClick={props.ordered}
+        className={classes.OrderButton}
+        disabled={!props.purchasable}
+      >
+        ORDER NOW
+      </button>
     </div>
   );
 }
