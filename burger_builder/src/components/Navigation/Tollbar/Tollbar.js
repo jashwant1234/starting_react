@@ -1,8 +1,8 @@
 import React from "react";
 import burgerLogo from "../../../assets/images/burger-logo.png";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import "bootstrap/dist/css/bootstrap.css";
-import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav } from "react-bootstrap";
 const Tollbar = (props) => {
   return (
     <div>

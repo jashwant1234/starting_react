@@ -1,24 +1,48 @@
-import React from 'react'
-import Aux from '../../../hoc/Auxiliary';
-import 'bootstrap/dist/css/bootstrap.css';
+import React, { Component } from "react";
+import Aux from "../../../hoc/Auxiliary";
+import "bootstrap/dist/css/bootstrap.css";
 
-export default function OrderSummary(props) {
+class OrderSummary extends Component {
+    componentDidUpdate(){
+        console.log("[orderSummary will update]");
+    }
+  render() {
     let ingredientSummary = [];
-     Object.entries(props.ingredients).forEach(([key, value],index) => {
-        ingredientSummary =  [...ingredientSummary,<li key={index}><span style={{textTransform : 'capitalize'}}>{key}</span> :{value}</li>]
-    })
+    Object.entries(this.props.ingredients).forEach(([key, value], index) => {
+      ingredientSummary = [
+        ...ingredientSummary,
+        <li key={index}>
+          <span style={{ textTransform: "capitalize" }}>{key}</span> :{value}
+        </li>,
+      ];
+    });
     return (
-        <Aux>
-            <h3>Your Order</h3>
-            <p>A delicious burger with the following ingredients: </p>
-            <ul>
-                {ingredientSummary}
-            </ul>
-            <p><strong>Total Price : {props.price.toFixed(2)}</strong></p>
-            <p>Continue to Checkout?</p>
-            <button type="button" className="btn btn-success" onClick={props.purchaseCancel}>CANCEL</button>
-            &nbsp;
-            <button type="button" className="btn btn-danger" onClick={props.purchaseContinue}>CONTINUE</button>
-        </Aux>
-    )
+      <Aux>
+        <h3>Your Order</h3>
+        <p>A delicious burger with the following ingredients: </p>
+        <ul>{ingredientSummary}</ul>
+        <p>
+          <strong>Total Price : {this.props.price.toFixed(2)}</strong>
+        </p>
+        <p>Continue to Checkout?</p>
+        <button
+          type="button"
+          className="btn btn-success"
+          onClick={this.props.purchaseCancel}
+        >
+          CANCEL
+        </button>
+        &nbsp;
+        <button
+          type="button"
+          className="btn btn-danger"
+          onClick={this.props.purchaseContinue}
+        >
+          CONTINUE
+        </button>
+      </Aux>
+    );
+  }
 }
+
+export default OrderSummary;
