@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.module.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import axios from 'axios';
+
+axios.defaults.baseURL = 'https://react-my-burger-a9a2e-default-rtdb.firebaseio.com';
 
 ReactDOM.render(
   <React.StrictMode>
