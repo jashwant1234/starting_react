@@ -27,7 +27,7 @@ class OrderSummary extends Component {
         <p>Continue to Checkout?</p>
         <button
           type="button"
-          className="btn btn-success"
+          className="btn btn-danger"
           onClick={this.props.purchaseCancel}
         >
           CANCEL
@@ -35,7 +35,7 @@ class OrderSummary extends Component {
         &nbsp;
         <button
           type="button"
-          className="btn btn-danger"
+          className="btn btn-success"
           onClick={this.props.purchaseContinue}
         >
           CONTINUE
