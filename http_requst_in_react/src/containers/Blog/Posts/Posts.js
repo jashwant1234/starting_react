@@ -17,7 +17,7 @@ export default class Posts extends Component {
       });
       this.setState({ posts: updatedPosts });
       console.log(res);
-    });
+    }).catch((err) => {alert("Network error")});
   }
 
   render() {
