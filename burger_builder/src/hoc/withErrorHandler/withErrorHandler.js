@@ -2,25 +2,29 @@ import React, { Component } from "react";
 // import PropTypes from 'prop-types'
 import Modal from "../../components/UI/Modal/Modal";
 import Aux from "../Auxiliary";
-import axios from "axios";
 
-function withErrorHandler(WrappedComponent) {
+function withErrorHandler(WrappedComponent,axios) {
   return class extends Component {
     state = {
       error: null,
     };
   
     componentWillMount() {
-      axios.interceptors.request.use((req) => {
+     this.reqinterceptor = axios.interceptors.request.use((req) => {
         this.setState({ error: null });
         return req;
       });
 
-      axios.interceptors.response.use(res => {
+      this.resinterceptor = axios.interceptors.response.use(res => {
           return res;
       }, (err) => {
         this.setState({ error: err });
       });
+    }
+
+    componentWillUnmount() {
+      axios.interceptors.request.eject(this.reqinterceptor);
+      axios.interceptors.response.eject(this.resinterceptor);
     }
     errorConfirmedHandler = () => {
       this.setState({ error: null });
