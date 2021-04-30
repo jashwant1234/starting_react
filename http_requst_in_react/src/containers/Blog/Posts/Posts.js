@@ -27,6 +27,7 @@ export default class Posts extends Component {
           key={post.id}
           title={post.title}
           author={post.author}
+        //   {...this.props} passing the route data to childe components
           click={() => this.postClickHandler(post.id)}
         />
       );
