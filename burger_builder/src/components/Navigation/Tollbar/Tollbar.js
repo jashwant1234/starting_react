@@ -3,11 +3,12 @@ import burgerLogo from "../../../assets/images/burger-logo.png";
 // import PropTypes from "prop-types";
 import "bootstrap/dist/css/bootstrap.css";
 import { Navbar, Nav } from "react-bootstrap";
+import {NavLink} from 'react-router-dom';
 const Tollbar = (props) => {
   return (
     <div>
       <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
           <img
             src={burgerLogo}
             alt="Logo"
@@ -20,8 +21,8 @@ const Tollbar = (props) => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="#home" active={true}>Burger Builder</Nav.Link>
-            <Nav.Link href="#link">Checkout</Nav.Link>
+           <Nav.Link as={NavLink} exact to="/" >Burger Builder</Nav.Link>
+           <Nav.Link as={NavLink} exact to="/orders" >Orders</Nav.Link>
             {/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
