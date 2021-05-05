@@ -27,33 +27,13 @@ class ContactData extends Component {
       deliveryMethod: "",
       terms: false,
     },
-    loading: false,
-    purchasing: false,
-  };
+};
 
   componentDidMount() {
     console.log(this.props);
   }
 
-  orderHandler = (event) => {
-    console.log(this.props);
-    this.setState({ loading: true });
-    event.preventDefault();
-    const data = {
-      ingredients: this.props.ingredients,
-      totalPrice: this.props.totalPrice,
-    };
-    console.log(data);
-    axios
-      .post("/orders.json", data)
-      .then((res) => {
-        this.setState({ loading: false, purchasing: false });
-        this.props.history.push("/");
-      })
-      .catch((err) => {
-        this.setState({ loading: false, purchasing: false });
-      });
-  };
+ 
 
   render() {
     const schema = yup.object().shape({
@@ -85,11 +65,23 @@ class ContactData extends Component {
         }}
         validationSchema={schema}
         onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            console.log(values);
-            setSubmitting(false);
-          }, 3000);
-        }}
+          setSubmitting(false);
+          const data = {
+            ingredients: this.props.ingredients,
+            totalPrice: this.props.totalPrice,
+            address:values
+          };
+          console.log(data);
+          axios
+            .post("/orders.json", data)
+            .then((res) => {
+              console.log(res);
+              this.props.history.push("/");
+            })
+            .catch((err) => {
+              console.log(err);
+            });
+      }}
       >
         {({
           handleSubmit,
