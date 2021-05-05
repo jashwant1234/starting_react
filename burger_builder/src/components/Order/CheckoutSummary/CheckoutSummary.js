@@ -8,6 +8,7 @@ const CheckoutSummary = (props) => {
     <div style={{ textAlign: "center" }}>
       <h1>Here your Burger is check it</h1>
       <Burger ingredients={props.ingredients} />
+     
       <button
         type="button"
         className="btn btn-danger"

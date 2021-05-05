@@ -169,7 +169,7 @@ class BurgerBuilder extends Component {
         <Modal
           show={this.state.purchasing}
           modalClosed={this.purchaseCancelHandler}
-        >
+          >
           {orderSummary}
         </Modal>
         {burger}
@@ -177,5 +177,6 @@ class BurgerBuilder extends Component {
     );
   }
 }
+
 
 export default withErrorHandler(BurgerBuilder,axios);
